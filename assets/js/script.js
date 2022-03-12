@@ -3,6 +3,16 @@ var nembers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 var lowerLetters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z",];
 var upperLetters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "p", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z",];
 var specCharacters = ["!", "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "\\", "]", "^", "_", "`", "{", "|", "}", "~", ];
+
+function generatePassword() {
+  var passLength = prompt("Choose a password length between 8 and 128 characters.");
+  if (passLength < 8 || passLength > 128) {
+    alert("Password lenth must be between 8 and 128 characters! Try again.");
+    return generatePassword();
+  }
+  
+
+}
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
 
