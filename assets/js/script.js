@@ -52,9 +52,10 @@ function generatePassword() {
     endResult.push(randomCharacters(upperLetters));
   }
 
+  for (var i = 0; i < passChoices.passLength - endResult.length; i++) {
+    endResult.push(randomCharacters(mostCharacters));
+  }
   
-
-
 
 }
 // Get references to the #generate element
