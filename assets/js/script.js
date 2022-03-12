@@ -34,7 +34,27 @@ function generatePassword() {
   var endResult = [];
   var mostCharacters = [];
 
+  if (passChoices.numbers) {
+    mostCharacters.concat(numbers);
+    endResult.push(randomCharacters(numbers));
+  }
+  if (passChoices.specCharacters) {
+    mostCharacters.concat(specCharacters);
+    endResult.push(randomCharacters(specCharacters));
+  }
+
+  if (passChoices.lowerLetters) {
+    mostCharacters.concat(lowerLetters);
+    endResult.push(randomCharacters(lowerLetters));
+  }
+  if (passChoices.upperLetters) {
+    mostCharacters.concat(upperLetters);
+    endResult.push(randomCharacters(upperLetters));
+  }
+
   
+
+
 
 }
 // Get references to the #generate element
