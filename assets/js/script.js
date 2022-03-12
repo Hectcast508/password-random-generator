@@ -26,6 +26,16 @@ function generatePassword() {
     specCharacters: specCharacters,
   };
 
+  function randomCharacters(array) {
+    var randomIndex = Math.floor(Math.random() * array.length);
+    return array[randomIndex];
+  }
+
+  var endResult = [];
+  var mostCharacters = [];
+
+  
+
 }
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
