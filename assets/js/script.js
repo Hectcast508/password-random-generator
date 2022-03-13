@@ -4,12 +4,15 @@ var lowerLetters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", 
 var upperLetters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "p", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z",];
 var specCharacters = ["!", "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "\\", "]", "^", "_", "`", "{", "|", "}", "~",];
 
-function generatePassword() {
+function passInfo() {
+  
   var passLength = prompt("Choose a password length between 8 and 128 characters.");
   if (passLength < 8 || passLength > 128) {
-    alert("Password lenth must be between 8 and 128 characters! Try again.");
-    return generatePassword();
+    alert("Password length must be between 8 and 128 characters! Try again.");
+    return null;
+    
   }
+  console.log(passLength)
   var numbers = confirm("Would you like numbers in you password?");
 
   var lowerLetters = confirm("Would you like lower case letters in your password?");
@@ -19,54 +22,57 @@ function generatePassword() {
   var specCharacters = confirm("Would you like speacial characters in your paaword?");
   if (numbers === false && lowerLetters === false && upperLetters === false && specCharacters === false) {
     alert("Must select at least one option. Try again.");
-    return generatePassword();
+    return null;
   }
-
+  
   var passChoices = {
     passLength: passLength,
     numbers: numbers,
     lowerLetters: lowerLetters,
     upperLetters: upperLetters,
     specCharacters: specCharacters,
-  };
-
-  
-
-  function randomCharacters(array) {
-    var randomIndex = Math.floor(Math.random() * array.length);
-    return array[randomIndex];
   }
+  return passChoices;
 
+};
+
+function randomCharacters(array) {
+  var randomIndex = Math.floor(Math.random() * array.length);
+  var pullIndex = array[randomIndex];
+  return pullIndex;
+};
+
+function generatePassword() {
+  var pullInfo = passInfo()
   var endResult = [];
   var mostCharacters = [];
+  
 
   
 
-  if (passChoices.numbers) {
-    mostCharacters.concat(numbers);
-    endResult.push(randomCharacters(numbers));
+  if (pullInfo.numbers) {
+    mostCharacters = mostCharacters.concat(numbers);
   }
-  if (passChoices.specCharacters) {
-    mostCharacters.concat(specCharacters);
-    endResult.push(randomCharacters(specCharacters));
+  if (pullInfo.specCharacters) {
+    mostCharacters = mostCharacters.concat(specCharacters);
   }
 
-  if (passChoices.lowerLetters) {
-    mostCharacters.concat(lowerLetters);
-    endResult.push(randomCharacters(lowerLetters));
+  if (pullInfo.lowerLetters) {
+    mostCharacters = mostCharacters.concat(lowerLetters);
   }
-  if (passChoices.upperLetters) {
-    mostCharacters.concat(upperLetters);
-    endResult.push(randomCharacters(upperLetters));
+  if (pullInfo.upperLetters) {
+    mostCharacters = mostCharacters.concat(upperLetters);
   }
 
-  for (var i = 0; i < passChoices.passLength - endResult.length; i++) {
-    endResult.push(randomCharacters(mostCharacters));
+  for (var i = 0; i < pullInfo.passLength; i++) {
+    var mostCharacter = randomCharacters(mostCharacters);
+    endResult.push(mostCharacter);
   }
+
   
   return endResult.join("");
-
-}
+  
+};
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
