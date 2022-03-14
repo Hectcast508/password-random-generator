@@ -9,8 +9,10 @@ Generates random passwords by clicking the button then customizing your preferen
 * JavaScript
 
 ## Screenshot
+![Image of deployed application.](./assets/images/password-generator.png)
 
 ## Link
+https://hectcast508.github.io/password-random-generator/
 
 ## Contribution
 Made by Hector Castaneda
